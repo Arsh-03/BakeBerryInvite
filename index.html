@@ -473,8 +473,29 @@
           </form>
         </div>
 
-        <div id="wishes-list" class="wishes-list">
-          <!-- Rendered dynamically by guestbook.js -->
+        <div class="wishes-feed-wrapper glass-panel">
+          <div class="wishes-feed-header">
+            <div class="wishes-feed-title">
+              <span class="wishes-title-icon">💌</span>
+              <h4>Guestbook Blessings</h4>
+              <span id="wishes-count-badge" class="wishes-count-badge">3</span>
+            </div>
+            <div class="wishes-feed-actions">
+              <button type="button" id="btn-toggle-wishes-expand" class="btn-wishes-toggle" aria-label="Toggle full view">
+                <span class="toggle-text">Expand All</span>
+                <span class="toggle-icon">⤢</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="wishes-list" class="wishes-list" data-lenis-prevent="true" data-lenis-prevent-touch="true" data-lenis-prevent-wheel="true">
+            <!-- Rendered dynamically by guestbook.js -->
+          </div>
+
+          <div class="wishes-scroll-hint-bar" id="wishes-scroll-hint" role="button" tabindex="0" aria-label="Scroll for more wishes">
+            <span>Scroll for more blessings</span>
+            <span class="scroll-hint-arrow">↓</span>
+          </div>
         </div>
       </div>
     </div>
@@ -482,7 +503,7 @@
 
   <!-- ================= VIP PASS POPUP MODAL ================= -->
   <div id="pass-modal" class="pass-modal-backdrop">
-    <div class="pass-modal-container">
+    <div class="pass-modal-container" data-lenis-prevent="true" data-lenis-prevent-touch="true" data-lenis-prevent-wheel="true">
       <button class="pass-modal-close" data-close-pass aria-label="Close VIP Pass">✕</button>
 
       <div id="digital-pass-card" class="pass-card">
