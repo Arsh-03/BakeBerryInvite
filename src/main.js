@@ -52,13 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     frameController.setProgress(initialScrollY / initialTrackHeight);
   }
 
-  // 4b. Tap to Reveal Feature: Tap or Click unfolds the 3D envelope automatically
+  // 4b. Tap to Reveal Feature: Tap or Click unfolds the 3D envelope gracefully
   const triggerAutoReveal = () => {
     const trackHeight = heroTrack.offsetHeight - window.innerHeight;
     if (trackHeight > 0) {
       lenis.scrollTo(trackHeight, {
-        duration: 2.4,
-        easing: (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+        duration: 3.8,
+        easing: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
       });
     }
   };
