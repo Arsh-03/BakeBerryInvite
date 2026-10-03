@@ -52,6 +52,36 @@ document.addEventListener('DOMContentLoaded', () => {
     frameController.setProgress(initialScrollY / initialTrackHeight);
   }
 
+  // 4b. Tap to Reveal Feature: Tap or Click unfolds the 3D envelope automatically
+  const triggerAutoReveal = () => {
+    const trackHeight = heroTrack.offsetHeight - window.innerHeight;
+    if (trackHeight > 0) {
+      lenis.scrollTo(trackHeight, {
+        duration: 2.4,
+        easing: (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+      });
+    }
+  };
+
+  const scrollCta = document.getElementById('scroll-cta');
+  if (scrollCta) {
+    scrollCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerAutoReveal();
+    });
+  }
+
+  const canvasEl = document.getElementById('envelope-canvas');
+  if (canvasEl) {
+    canvasEl.style.cursor = 'pointer';
+    canvasEl.addEventListener('click', () => {
+      if (frameController.currentProgress < 0.18) {
+        triggerAutoReveal();
+      }
+    });
+  }
+
   // 5. Initialize GSAP ScrollTrigger Animations
   initScrollAnimations(lenis);
 
@@ -90,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Countdown Timer logic
 function setupCountdown() {
-  const targetDate = new Date('2026-10-25T10:30:00+05:30').getTime();
+  const targetDate = new Date('2026-10-11T16:00:00+05:30').getTime();
 
   const daysEl = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');

@@ -280,8 +280,10 @@ body::before {
   background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(250, 247, 242, 0.2) 100%);
 }
 
-/* Minimalist On-Screen CTA */
-.scroll-cta {
+/* ==========================================================================
+   INTERACTIVE TAP-TO-REVEAL CTA BUTTON
+   ========================================================================== */
+.scroll-cta-pill {
   position: absolute;
   bottom: max(2.5rem, env(safe-area-inset-bottom, 2.5rem));
   left: 50%;
@@ -291,51 +293,98 @@ body::before {
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  pointer-events: none;
-  text-align: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
   transition: opacity 0.4s ease, transform 0.4s ease;
   width: max-content;
+  pointer-events: auto;
+}
+
+.cta-pill-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.65rem;
+  border-radius: 40px;
+  background: rgba(255, 254, 250, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 10px 30px rgba(74, 12, 30, 0.16), 0 0 20px rgba(212, 175, 55, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: pulseGoldGlow 3s infinite alternate;
+}
+
+.cta-pill-inner:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 15px 40px rgba(74, 12, 30, 0.25), 0 0 30px rgba(212, 175, 55, 0.6);
+  background: #FFF;
+  border-color: var(--berry-velvet);
+}
+
+@keyframes pulseGoldGlow {
+  0% { box-shadow: 0 10px 30px rgba(74, 12, 30, 0.15), 0 0 15px rgba(212, 175, 55, 0.25); }
+  100% { box-shadow: 0 14px 35px rgba(74, 12, 30, 0.22), 0 0 30px rgba(212, 175, 55, 0.55); }
+}
+
+.cta-sparkle {
+  font-size: 1rem;
+  animation: spinSparkle 4s ease-in-out infinite;
+}
+
+@keyframes spinSparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.25) rotate(15deg); }
 }
 
 .cta-label {
   font-family: var(--font-sans);
-  font-size: clamp(0.75rem, 2.5vw, 0.85rem);
-  letter-spacing: 0.28em;
+  font-size: clamp(0.78rem, 2.6vw, 0.88rem);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--berry-velvet);
-  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .cta-arrow {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: var(--gold-dark);
   animation: bounceArrow 1.8s ease-in-out infinite;
+}
+
+.cta-subhint {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
   text-shadow: 0 1px 6px rgba(255, 255, 255, 0.9);
 }
 
 @keyframes bounceArrow {
-  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  0%, 100% { transform: translateY(0); opacity: 0.65; }
   50% { transform: translateY(7px); opacity: 1; }
 }
 
 /* ==========================================================================
-   THE INVITATION CARD OVERLAY
+   IMPROVISED LUXURY INVITATION CARD
    ========================================================================== */
-#invitation-card-overlay {
+#invitation-card-overlay.luxury-invitation-card {
   position: absolute;
   top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 40;
-  width: min(530px, 88vw);
-  background: rgba(255, 253, 248, 0.95);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  width: min(540px, 90vw);
+  background: linear-gradient(150deg, rgba(255, 255, 252, 0.98) 0%, rgba(253, 248, 239, 0.96) 55%, rgba(249, 242, 229, 0.98) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1.5px solid var(--gold-primary);
-  border-radius: 12px;
-  padding: 1.8rem 2.2rem;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 2rem 2.4rem;
+  box-shadow: 0 35px 80px rgba(74, 12, 30, 0.22), 0 12px 35px rgba(212, 175, 55, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.95), inset 0 0 40px rgba(212, 175, 55, 0.08);
   opacity: 0;
   pointer-events: none;
   text-align: center;
@@ -348,107 +397,162 @@ body::before {
 .card-foil-sheen {
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: 14px;
   pointer-events: none;
   mix-blend-mode: soft-light;
-  opacity: 0.9;
-  transition: background 0.12s ease-out;
+  opacity: 0.95;
+  transition: background 0.1s ease-out;
 }
 
-/* Floating iOS Gyroscope Permission Prompt */
-.gyro-permission-pill {
-  position: fixed;
-  bottom: max(1.2rem, env(safe-area-inset-bottom, 1.2rem));
-  right: 1.2rem;
-  z-index: 1000;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.gyro-permission-pill.hide {
-  opacity: 0;
-  transform: translateY(20px);
+/* Outer & Inner Filigree Frames */
+.card-outer-gold-border {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
   pointer-events: none;
-}
-
-.btn-gyro-prompt {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  border: 1.5px solid var(--gold-primary);
-  border-radius: 30px;
-  padding: 0.5rem 1rem;
-  color: var(--berry-velvet);
-  font-family: var(--font-sans);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
 }
 
 .card-inner-frame {
   position: absolute;
-  inset: 7px;
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  inset: 10px;
+  border: 1px dashed rgba(212, 175, 55, 0.5);
   border-radius: 8px;
   pointer-events: none;
 }
 
-.card-monogram {
-  display: inline-flex;
+/* Ornamental Corner Flourishes */
+.corner-flourish {
+  position: absolute;
+  font-size: 0.75rem;
+  color: var(--gold-primary);
+  line-height: 1;
+  opacity: 0.75;
+  text-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+}
+.corner-flourish.corner-tl { top: 3px; left: 4px; }
+.corner-flourish.corner-tr { top: 3px; right: 4px; }
+.corner-flourish.corner-bl { bottom: 3px; left: 4px; }
+.corner-flourish.corner-br { bottom: 3px; right: 4px; }
+
+/* Royal Monogram & Crest */
+.card-seal-container {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 0.6rem auto;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+}
+
+.card-seal-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0) 70%);
+  animation: pulseSeal 3s infinite alternate;
+}
+
+@keyframes pulseSeal {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+.card-monogram {
+  position: relative;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1.5px solid var(--gold-primary);
-  background: #FFF;
-  color: var(--berry-velvet);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF6EE 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  z-index: 2;
+}
+
+.monogram-crown {
+  font-size: 0.65rem;
+  color: var(--gold-dark);
+  line-height: 1;
+  margin-top: -2px;
+}
+
+.monogram-letters {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--berry-velvet);
+  line-height: 1;
+  letter-spacing: 0.05em;
 }
 
 .card-intro {
   font-family: var(--font-script);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: var(--gold-dark);
   line-height: 1.1;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .card-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 3.2vw, 1.65rem);
+  font-size: clamp(1.25rem, 3.4vw, 1.7rem);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--berry-velvet);
   text-transform: uppercase;
   line-height: 1.2;
   margin-bottom: 0.35rem;
 }
 
+.card-ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+  margin-bottom: 0.65rem;
+  opacity: 0.85;
+}
+
+.card-ornament-divider::before,
+.card-ornament-divider::after {
+  content: '';
+  width: 45px;
+  height: 1px;
+  background: var(--gold-border-gradient);
+}
+
+.gem-accent {
+  font-size: 0.7rem;
+  color: var(--berry-velvet);
+}
+
 .card-desc {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: var(--text-dark);
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.5;
   margin-bottom: 1.1rem;
 }
 
+/* Auspicious Date & Time Meta Badge Row */
 .card-meta-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-  padding: 0.75rem 0.5rem;
-  border-top: 1px solid rgba(212, 175, 55, 0.25);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
-  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  margin-bottom: 1.35rem;
+  box-shadow: inset 0 1px 4px rgba(212, 175, 55, 0.08);
 }
 
 .card-meta-item {
@@ -457,18 +561,25 @@ body::before {
   align-items: center;
 }
 
+.card-meta-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--gold-border-gradient);
+  opacity: 0.6;
+}
+
 .meta-label {
   font-size: 0.68rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold-dark);
-  font-weight: 600;
-  margin-bottom: 2px;
+  font-weight: 700;
+  margin-bottom: 3px;
 }
 
 .meta-value {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--text-dark);
 }
@@ -477,47 +588,67 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
 }
 
 .btn-card-primary {
-  padding: 0.65rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  padding: 0.72rem 1.8rem;
   border-radius: 30px;
   background: linear-gradient(135deg, var(--berry-velvet), var(--berry-dark));
-  border: 1px solid var(--gold-primary);
+  border: 1.5px solid var(--gold-primary);
   color: #FFF;
   text-decoration: none;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  box-shadow: 0 6px 20px rgba(138, 21, 56, 0.3);
+  box-shadow: 0 8px 24px rgba(138, 21, 56, 0.35);
   transition: var(--transition-smooth);
 }
 
 .btn-card-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(138, 21, 56, 0.45);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(138, 21, 56, 0.5), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+
+.btn-card-primary:hover .btn-shine {
+  left: 200%;
 }
 
 .btn-card-outline {
-  padding: 0.65rem 1.4rem;
+  padding: 0.72rem 1.5rem;
   border-radius: 30px;
-  background: white;
-  border: 1px solid var(--gold-primary);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--gold-primary);
   color: var(--text-dark);
   text-decoration: none;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: var(--transition-smooth);
 }
 
 .btn-card-outline:hover {
-  background: var(--bg-warm-alabaster);
+  background: #FFF;
   border-color: var(--berry-velvet);
+  color: var(--berry-velvet);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.25);
 }
 
 /* ==========================================================================
@@ -2009,24 +2140,33 @@ body::before {
     padding: 3.5rem max(1rem, env(safe-area-inset-right, 1rem)) max(2.5rem, env(safe-area-inset-bottom, 2.5rem)) max(1rem, env(safe-area-inset-left, 1rem));
   }
 
-  /* Mobile Phone Optimization for 3D Invitation Card */
-  #invitation-card-overlay {
-    width: min(340px, calc(100vw - 2rem));
-    padding: 1.3rem 1.1rem;
+  /* Mobile Phone Optimization for 3D Luxury Invitation Card */
+  #invitation-card-overlay.luxury-invitation-card {
+    width: min(355px, calc(100vw - 2rem));
+    padding: 1.4rem 1.15rem;
     top: 50%;
     border-radius: 12px;
     box-sizing: border-box;
   }
 
+  .card-seal-container {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.4rem;
+  }
+
   .card-monogram {
-    width: 38px;
-    height: 38px;
-    font-size: 1.15rem;
-    margin-bottom: 0.35rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .monogram-letters {
+    font-size: 1.05rem;
   }
 
   .card-intro {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.15rem;
   }
 
   .card-title {
@@ -2034,16 +2174,20 @@ body::before {
     margin-bottom: 0.25rem;
   }
 
+  .card-ornament-divider {
+    font-size: 0.75rem;
+    margin-bottom: 0.45rem;
+  }
+
   .card-desc {
-    font-size: 0.78rem;
+    font-size: 0.77rem;
     line-height: 1.4;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.85rem;
   }
 
   .card-meta-row {
-    padding: 0.5rem 0.25rem;
-    margin-bottom: 0.9rem;
-    gap: 0.4rem;
+    padding: 0.55rem 0.5rem;
+    margin-bottom: 0.95rem;
   }
 
   .meta-label {
@@ -2051,22 +2195,27 @@ body::before {
   }
 
   .meta-value {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
   }
 
   .btn-card-primary,
   .btn-card-outline {
-    padding: 0.55rem 1.1rem;
+    padding: 0.58rem 1.15rem;
     font-size: 0.74rem;
   }
 
-  .scroll-cta {
+  .scroll-cta-pill {
     bottom: max(1.8rem, env(safe-area-inset-bottom, 1.8rem));
   }
 
+  .cta-pill-inner {
+    padding: 0.65rem 1.25rem;
+    gap: 0.5rem;
+  }
+
   .cta-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
   }
 
   .story-highlights-card,

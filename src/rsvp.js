@@ -141,7 +141,7 @@ export class RSVPManager {
       const title = encodeURIComponent("Bake Berry Foods - Grand Flagship Opening");
       const details = encodeURIComponent(`VIP Invitation Pass: #${data.passId}\nGuest: ${data.name}\n\nJoin us for the Grand Inauguration, Auspicious Ribbon Cutting, Chef's Tasting Flights, and French Viennoiserie.`);
       const location = encodeURIComponent("Bake Berry Foods, 142/A Khanapur Road, Tilakwadi, Belagavi, Karnataka 590006");
-      const dates = "20261025T050000Z/20261025T093000Z"; // 10:30 AM to 3:00 PM IST (UTC +5:30)
+      const dates = "20261011T103000Z/20261011T153000Z"; // 4:00 PM to 9:00 PM IST (UTC +5:30)
       gcalBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
     }
 
@@ -160,7 +160,7 @@ export class RSVPManager {
       const text = encodeURIComponent(
         `🍓✨ *Exclusive Invitation: Bake Berry Foods Grand Opening*\n\n` +
         `I have reserved my VIP Presence for the Inauguration of Bake Berry Foods' new flagship bakery in Belagavi!\n\n` +
-        `📅 Date: Sunday, 25 October 2026 at 10:30 AM\n` +
+        `📅 Date: Sunday, 11 October 2026 at 4:00 PM\n` +
         `📍 Venue: Tilakwadi, Belagavi\n\n` +
         `You're invited too! Unfold the 3D invitation and reserve your VIP pass here:\n` +
         `${window.location.href}`
@@ -186,8 +186,8 @@ BEGIN:VEVENT
 SUMMARY:Bake Berry Foods - Grand Opening Ceremony (Belagavi)
 DESCRIPTION:VIP Pass #${data.passId} for ${data.name}. Auspicious Ribbon Cutting, Patisserie Tasting Flight & Celebration.
 LOCATION:Bake Berry Foods, 142/A Khanapur Road, Tilakwadi, Belagavi, Karnataka 590006
-DTSTART:20261025T050000Z
-DTEND:20261025T093000Z
+DTSTART:20261011T103000Z
+DTEND:20261011T153000Z
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR`;
@@ -302,10 +302,10 @@ END:VCALENDAR`;
     ctx.fillText('DATE & CEREMONY', 110, 555);
     ctx.fillStyle = '#1A1614';
     ctx.font = 'bold 20px "Outfit", sans-serif';
-    ctx.fillText('Sunday, October 25, 2026', 110, 585);
+    ctx.fillText('Sunday, October 11, 2026', 110, 585);
     ctx.fillStyle = '#555';
     ctx.font = '16px "Outfit", sans-serif';
-    ctx.fillText('Ribbon Cutting & High Tea: 10:30 AM Onwards', 110, 615);
+    ctx.fillText('Ribbon Cutting & High Tea: 4:00 PM Onwards', 110, 615);
 
     ctx.fillStyle = '#8A6D3B';
     ctx.font = '600 14px "Outfit", sans-serif';

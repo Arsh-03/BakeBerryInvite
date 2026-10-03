@@ -41,19 +41,41 @@
       <canvas id="envelope-canvas"></canvas>
       <div class="hero-atmosphere"></div>
 
-      <!-- Minimalist On-Screen CTA (No shapes, pure typography) -->
-      <div id="scroll-cta" class="scroll-cta">
-        <span class="cta-label">Scroll down to reveal</span>
-        <span class="cta-arrow">↓</span>
-      </div>
+      <!-- Interactive Tap or Scroll CTA Button -->
+      <button id="scroll-cta" class="scroll-cta-pill" title="Tap to Reveal Invitation" aria-label="Tap to Reveal Invitation">
+        <div class="cta-pill-inner">
+          <span class="cta-sparkle">✨</span>
+          <span class="cta-label">Tap to Reveal Invitation</span>
+          <span class="cta-arrow">↓</span>
+        </div>
+        <span class="cta-subhint">or scroll to unfold</span>
+      </button>
 
       <!-- INVITATION CARD OVERLAY (Aligns seamlessly on the card in Frame 50) -->
-      <div id="invitation-card-overlay">
+      <div id="invitation-card-overlay" class="luxury-invitation-card">
         <div class="card-foil-sheen"></div>
-        <div class="card-inner-frame"></div>
-        <div class="card-monogram">BB</div>
+        <div class="card-outer-gold-border"></div>
+        <div class="card-inner-frame">
+          <span class="corner-flourish corner-tl">✦</span>
+          <span class="corner-flourish corner-tr">✦</span>
+          <span class="corner-flourish corner-bl">✦</span>
+          <span class="corner-flourish corner-br">✦</span>
+        </div>
+
+        <div class="card-seal-container">
+          <div class="card-seal-glow"></div>
+          <div class="card-monogram">
+            <span class="monogram-crown">❦</span>
+            <span class="monogram-letters">BB</span>
+          </div>
+        </div>
+
         <p class="card-intro">You & your family are cordially invited</p>
         <h2 class="card-title">Grand Opening Inauguration</h2>
+        <div class="card-ornament-divider">
+          <span>❦</span><span class="gem-accent">❖</span><span>❦</span>
+        </div>
+
         <p class="card-desc">
           Step into a world of mastercrafted French viennoiserie, artisanal sourdough, and berry-infused haute patisserie as we open our flagship boutique in Belagavi.
         </p>
@@ -61,16 +83,20 @@
         <div class="card-meta-row">
           <div class="card-meta-item">
             <span class="meta-label">Auspicious Date</span>
-            <span class="meta-value">Sunday, 25 Oct 2026</span>
+            <span class="meta-value">Sunday, 11 Oct 2026</span>
           </div>
+          <div class="card-meta-divider"></div>
           <div class="card-meta-item">
             <span class="meta-label">Inauguration & High Tea</span>
-            <span class="meta-value">10:30 AM Onwards</span>
+            <span class="meta-value">4:00 PM Onwards</span>
           </div>
         </div>
 
         <div class="card-cta-group">
-          <a href="#rsvp" class="btn-card-primary">Reserve VIP Pass</a>
+          <a href="#rsvp" class="btn-card-primary">
+            <span>Reserve VIP Pass</span>
+            <span class="btn-shine"></span>
+          </a>
           <a href="#schedule" class="btn-card-outline">Event Schedule</a>
         </div>
       </div>
@@ -82,7 +108,7 @@
     <div class="container-wide countdown-wrapper">
       <div class="countdown-heading">
         <h3>Countdown to the Grand Celebration</h3>
-        <p>Sunday, October 25, 2026 • 10:30 AM • Belagavi Flagship Store</p>
+        <p>Sunday, October 11, 2026 • 4:00 PM • Belagavi Flagship Store</p>
       </div>
 
       <div class="timer-boxes">
@@ -183,8 +209,8 @@
       <div class="timeline-list">
         <div class="timeline-card glass-panel">
           <div class="timeline-time-badge">
-            <span>10:00</span>
-            <small>AM</small>
+            <span>03:30</span>
+            <small>PM</small>
           </div>
           <div class="timeline-content">
             <h3 class="timeline-title">VIP Red Carpet & Welcome Mocktails</h3>
@@ -196,8 +222,8 @@
 
         <div class="timeline-card glass-panel">
           <div class="timeline-time-badge">
-            <span>10:30</span>
-            <small>AM</small>
+            <span>04:00</span>
+            <small>PM</small>
           </div>
           <div class="timeline-content">
             <h3 class="timeline-title">Auspicious Ribbon Cutting & Lamp Lighting</h3>
@@ -209,8 +235,8 @@
 
         <div class="timeline-card glass-panel">
           <div class="timeline-time-badge">
-            <span>11:15</span>
-            <small>AM</small>
+            <span>04:45</span>
+            <small>PM</small>
           </div>
           <div class="timeline-content">
             <h3 class="timeline-title">Live Baking Demonstration by Master Pâtissiers</h3>
@@ -222,7 +248,7 @@
 
         <div class="timeline-card glass-panel">
           <div class="timeline-time-badge">
-            <span>12:00</span>
+            <span>05:30</span>
             <small>PM</small>
           </div>
           <div class="timeline-content">
@@ -235,11 +261,11 @@
 
         <div class="timeline-card glass-panel">
           <div class="timeline-time-badge">
-            <span>01:30</span>
+            <span>06:45</span>
             <small>PM</small>
           </div>
           <div class="timeline-content">
-            <h3 class="timeline-title">Acoustic High Tea & Commemorative Gifting</h3>
+            <h3 class="timeline-title">Evening High Tea & Commemorative Gifting</h3>
             <p class="timeline-desc">
               Gentle live acoustic violin melodies, artisanal coffee pairings, and presentation of the Inaugural Berry Gift Box to our first 100 guests.
             </p>
@@ -471,7 +497,7 @@
         </div>
 
         <div style="font-size: 0.85rem; color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.5;">
-          <strong>Sunday, 25 October 2026 • 10:30 AM</strong><br>
+          <strong>Sunday, 11 October 2026 • 4:00 PM</strong><br>
           Khanapur Road, Tilakwadi, Belagavi
         </div>
 

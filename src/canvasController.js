@@ -147,9 +147,11 @@ export class CanvasFrameController {
     if (this.scrollCta) {
       if (this.targetProgress > 0.04) {
         this.scrollCta.style.opacity = '0';
+        this.scrollCta.style.pointerEvents = 'none';
         this.scrollCta.style.transform = 'translate(-50%, 15px)';
       } else {
         this.scrollCta.style.opacity = '1';
+        this.scrollCta.style.pointerEvents = 'auto';
         this.scrollCta.style.transform = 'translate(-50%, 0)';
       }
     }
