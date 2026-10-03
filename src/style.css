@@ -435,153 +435,199 @@ body::before {
 .corner-flourish.corner-bl { bottom: 3px; left: 4px; }
 .corner-flourish.corner-br { bottom: 3px; right: 4px; }
 
-/* Royal Monogram & Crest */
-.card-seal-container {
-  position: relative;
-  width: 52px;
-  height: 52px;
-  margin: 0 auto 0.6rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-seal-glow {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0) 70%);
-  animation: pulseSeal 3s infinite alternate;
-}
-
-@keyframes pulseSeal {
-  0% { transform: scale(0.9); opacity: 0.5; }
-  100% { transform: scale(1.15); opacity: 1; }
-}
-
-.card-monogram {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1.5px solid var(--gold-primary);
-  background: linear-gradient(135deg, #FFFFFF 0%, #FAF6EE 100%);
+/* Authentic Bakeberry Brand Header */
+.card-brand-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-  z-index: 2;
+  margin-bottom: 0.5rem;
 }
 
-.monogram-crown {
-  font-size: 0.65rem;
-  color: var(--gold-dark);
+.card-brand-wordmark {
+  font-family: var(--font-sans);
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #3C2218;
   line-height: 1;
-  margin-top: -2px;
-}
-
-.monogram-letters {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--berry-velvet);
-  line-height: 1;
-  letter-spacing: 0.05em;
-}
-
-.card-intro {
-  font-family: var(--font-script);
-  font-size: 1.7rem;
-  color: var(--gold-dark);
-  line-height: 1.1;
-  margin-bottom: 0.25rem;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.card-brand-sub {
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: #7A533E;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.card-pretitle {
+  font-family: var(--font-serif);
+  font-size: 0.76rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
 }
 
 .card-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 3.4vw, 1.7rem);
+  font-size: clamp(1.4rem, 3.8vw, 1.95rem);
   font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--berry-velvet);
+  letter-spacing: 0.12em;
+  color: #3C2218;
   text-transform: uppercase;
-  line-height: 1.2;
-  margin-bottom: 0.35rem;
-}
-
-.card-ornament-divider {
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  gap: 0.6rem;
-  color: var(--gold-primary);
-  font-size: 0.85rem;
-  margin-bottom: 0.65rem;
-  opacity: 0.85;
+  gap: 0.35rem;
 }
 
-.card-ornament-divider::before,
-.card-ornament-divider::after {
-  content: '';
-  width: 45px;
-  height: 1px;
-  background: var(--gold-border-gradient);
-}
-
-.gem-accent {
-  font-size: 0.7rem;
+.title-cursive {
+  font-family: var(--font-script);
+  font-size: 2.2rem;
   color: var(--berry-velvet);
-}
-
-.card-desc {
-  font-size: 0.84rem;
-  color: var(--text-dark);
+  text-transform: lowercase;
   font-weight: 400;
-  line-height: 1.5;
-  margin-bottom: 1.1rem;
+  letter-spacing: 0;
+  display: inline-block;
+  transform: translateY(2px);
 }
 
-/* Auspicious Date & Time Meta Badge Row */
-.card-meta-row {
-  display: flex;
+.card-milestone-pill {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #3C2218;
+  padding: 0.25rem 0.9rem;
+  background: rgba(212, 175, 55, 0.16);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+}
+
+/* Poster-Style 3-Column Meta Row */
+.card-meta-row.poster-layout {
+  display: grid;
+  grid-template-columns: 1fr auto 1.1fr auto 1.1fr;
   align-items: center;
-  justify-content: space-around;
-  padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  gap: 0.5rem;
+  padding: 0.85rem 0.6rem;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.4);
   border-radius: 12px;
-  margin-bottom: 1.35rem;
-  box-shadow: inset 0 1px 4px rgba(212, 175, 55, 0.08);
+  margin-bottom: 1.1rem;
+  box-shadow: inset 0 1px 6px rgba(212, 175, 55, 0.08);
 }
 
 .card-meta-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .card-meta-divider {
   width: 1px;
-  height: 32px;
+  height: 42px;
   background: var(--gold-border-gradient);
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 .meta-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold-dark);
   font-weight: 700;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .meta-value {
   font-family: var(--font-serif);
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.meta-value.venue-name {
+  font-size: 0.86rem;
+  color: var(--berry-velvet);
+}
+
+.meta-time {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+/* Featured 11th October Date Tile */
+.date-featured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.3rem;
+}
+
+.meta-day-number {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #3C2218;
+}
+
+.meta-day-number sup {
+  font-size: 0.7rem;
+  font-weight: 600;
+  vertical-align: super;
+  color: var(--gold-dark);
+}
+
+.meta-month-name {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-top: 2px;
+}
+
+/* Personal Hosts Box from Poster */
+.card-hosts-box {
+  margin-bottom: 1.25rem;
+  padding: 0.7rem 0.85rem;
+  border-top: 1px dashed rgba(212, 175, 55, 0.45);
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.45);
+}
+
+.card-hosts-names {
+  font-family: var(--font-script);
+  font-size: 1.45rem;
+  color: #3C2218;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.card-hosts-note {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+  font-weight: 500;
 }
 
 .card-cta-group {
@@ -2149,23 +2195,18 @@ body::before {
     box-sizing: border-box;
   }
 
-  .card-seal-container {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 0.4rem;
+  .card-brand-wordmark {
+    font-size: 1.75rem;
   }
 
-  .card-monogram {
-    width: 40px;
-    height: 40px;
+  .card-brand-sub {
+    font-size: 0.56rem;
+    letter-spacing: 0.28em;
   }
 
-  .monogram-letters {
-    font-size: 1.05rem;
-  }
-
-  .card-intro {
-    font-size: 1.4rem;
+  .card-pretitle {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
     margin-bottom: 0.15rem;
   }
 
@@ -2174,28 +2215,56 @@ body::before {
     margin-bottom: 0.25rem;
   }
 
-  .card-ornament-divider {
-    font-size: 0.75rem;
-    margin-bottom: 0.45rem;
+  .title-cursive {
+    font-size: 1.65rem;
   }
 
-  .card-desc {
-    font-size: 0.77rem;
-    line-height: 1.4;
-    margin-bottom: 0.85rem;
+  .card-milestone-pill {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.65rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.65rem;
   }
 
-  .card-meta-row {
-    padding: 0.55rem 0.5rem;
-    margin-bottom: 0.95rem;
+  .card-meta-row.poster-layout {
+    gap: 0.35rem;
+    padding: 0.6rem 0.4rem;
+    margin-bottom: 0.75rem;
   }
 
   .meta-label {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
   }
 
   .meta-value {
-    font-size: 0.84rem;
+    font-size: 0.8rem;
+  }
+
+  .meta-time {
+    font-size: 0.66rem;
+  }
+
+  .meta-day-number {
+    font-size: 1.35rem;
+  }
+
+  .meta-month-name {
+    font-size: 0.62rem;
+  }
+
+  .card-hosts-box {
+    margin-bottom: 0.85rem;
+    padding-top: 0.45rem;
+  }
+
+  .card-hosts-names {
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
+  .card-hosts-note {
+    font-size: 0.72rem;
+    line-height: 1.4;
   }
 
   .btn-card-primary,

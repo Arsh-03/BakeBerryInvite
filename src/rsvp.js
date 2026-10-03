@@ -138,9 +138,9 @@ export class RSVPManager {
     // Add to Google Calendar
     const gcalBtn = document.getElementById('btn-add-gcal');
     if (gcalBtn) {
-      const title = encodeURIComponent("Bake Berry Foods - Grand Flagship Opening");
-      const details = encodeURIComponent(`VIP Invitation Pass: #${data.passId}\nGuest: ${data.name}\n\nJoin us for the Grand Inauguration, Auspicious Ribbon Cutting, Chef's Tasting Flights, and French Viennoiserie.`);
-      const location = encodeURIComponent("Bake Berry Foods, 142/A Khanapur Road, Tilakwadi, Belagavi, Karnataka 590006");
+      const title = encodeURIComponent("Bakeberry Bakery & Cafe - Grand Opening (4th Outlet)");
+      const details = encodeURIComponent(`VIP Invitation Pass: #${data.passId}\nGuest: ${data.name}\n\nWarmly invited by Malikrehan Peerzade & Khubeb Ahmed Peerzade.\nJoin us for the Grand Inauguration of Bakeberry's 4th Outlet, Ribbon Cutting & Artisanal Tasting.`);
+      const location = encodeURIComponent("Bakeberry Bakery & Cafe, CTS 10650, Opp. DMart, Nehru Nagar, Belagavi, Karnataka");
       const dates = "20261011T103000Z/20261011T153000Z"; // 4:00 PM to 9:00 PM IST (UTC +5:30)
       gcalBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
     }
@@ -158,10 +158,11 @@ export class RSVPManager {
     const whatsappBtn = document.getElementById('btn-share-whatsapp');
     if (whatsappBtn) {
       const text = encodeURIComponent(
-        `🍓✨ *Exclusive Invitation: Bake Berry Foods Grand Opening*\n\n` +
-        `I have reserved my VIP Presence for the Inauguration of Bake Berry Foods' new flagship bakery in Belagavi!\n\n` +
+        `🍓✨ *Exclusive Invitation: Bakeberry Bakery & Cafe Grand Opening (4th Outlet)*\n\n` +
+        `I have reserved my VIP Presence for the Inauguration of Bakeberry's 4th Outlet!\n\n` +
         `📅 Date: Sunday, 11 October 2026 at 4:00 PM\n` +
-        `📍 Venue: Tilakwadi, Belagavi\n\n` +
+        `📍 Venue: CTS 10650, Opp. DMart, Nehru Nagar, Belagavi\n` +
+        `👥 Hosted by: Malikrehan Peerzade & Khubeb Ahmed Peerzade\n\n` +
         `You're invited too! Unfold the 3D invitation and reserve your VIP pass here:\n` +
         `${window.location.href}`
       );
@@ -179,13 +180,13 @@ export class RSVPManager {
     const icsContent = 
 `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Bake Berry Foods//Inaugural Invitation//EN
+PRODID:-//Bakeberry//Inaugural Invitation//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-SUMMARY:Bake Berry Foods - Grand Opening Ceremony (Belagavi)
-DESCRIPTION:VIP Pass #${data.passId} for ${data.name}. Auspicious Ribbon Cutting, Patisserie Tasting Flight & Celebration.
-LOCATION:Bake Berry Foods, 142/A Khanapur Road, Tilakwadi, Belagavi, Karnataka 590006
+SUMMARY:Bakeberry Bakery & Cafe - Grand Opening (4th Outlet)
+DESCRIPTION:VIP Pass #${data.passId} for ${data.name}. Warmly invited by Malikrehan Peerzade & Khubeb Ahmed Peerzade. Grand Opening of our 4th Outlet in Belagavi.
+LOCATION:Bakeberry Bakery & Cafe, CTS 10650, Opp. DMart, Nehru Nagar, Belagavi, Karnataka
 DTSTART:20261011T103000Z
 DTEND:20261011T153000Z
 STATUS:CONFIRMED
@@ -309,19 +310,19 @@ END:VCALENDAR`;
 
     ctx.fillStyle = '#8A6D3B';
     ctx.font = '600 14px "Outfit", sans-serif';
-    ctx.fillText('FLAGSHIP VENUE', 110, 670);
+    ctx.fillText('4TH OUTLET VENUE', 110, 670);
     ctx.fillStyle = '#1A1614';
     ctx.font = 'bold 18px "Outfit", sans-serif';
-    ctx.fillText('Bake Berry Foods, Khanapur Road, Tilakwadi', 110, 700);
+    ctx.fillText('Bakeberry Bakery & Cafe, Opp. DMart', 110, 700);
     ctx.fillStyle = '#666';
     ctx.font = '15px "Outfit", sans-serif';
-    ctx.fillText('Belagavi, Karnataka 590006 • Valet Parking Available', 110, 725);
+    ctx.fillText('CTS 10650, Nehru Nagar, Belagavi • Valet Parking Available', 110, 725);
 
     // Footer Stamp
     ctx.textAlign = 'center';
     ctx.fillStyle = '#8A1538';
     ctx.font = 'bold 16px "Cinzel", serif';
-    ctx.fillText('BAKE BERRY FOODS • PRIVILEGE ADMITTANCE', width / 2, 850);
+    ctx.fillText('BAKEBERRY BAKERY & CAFE • 4TH OUTLET OPENING', width / 2, 850);
     ctx.fillStyle = '#666';
     ctx.font = '14px "Outfit", sans-serif';
     ctx.fillText('Please present this digital pass or QR at the reception desk.', width / 2, 880);
