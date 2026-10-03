@@ -228,15 +228,15 @@ END:VCALENDAR`;
     ctx.lineWidth = 1.5;
     ctx.strokeRect(38, 38, width - 76, height - 76);
 
-    // Header Monogram
-    ctx.fillStyle = '#8A1538';
+    // Header Brand
+    ctx.fillStyle = '#3C2218';
     ctx.font = 'bold 36px "Cinzel", serif';
     ctx.textAlign = 'center';
-    ctx.fillText('BAKE BERRY FOODS', width / 2, 110);
+    ctx.fillText('BAKEBERRY BAKERY & CAFE', width / 2, 110);
 
-    ctx.fillStyle = '#C5A059';
-    ctx.font = '500 16px "Outfit", sans-serif';
-    ctx.fillText('BELAGAVI • ARTISANAL PATISSERIE & BOUTIQUE', width / 2, 140);
+    ctx.fillStyle = '#9E7D30';
+    ctx.font = '600 15px "Outfit", sans-serif';
+    ctx.fillText('GRAND OPENING OF OUR 4TH OUTLET • BELAGAVI', width / 2, 140);
 
     // Decorative line
     ctx.strokeStyle = '#D4AF37';
